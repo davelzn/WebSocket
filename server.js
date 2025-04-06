@@ -4,7 +4,7 @@ const http = require("http");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const { Server } = require('socket.io'); // importazione oggetto Server da socket.io
+const { Server } = require('socket.io');
 const conf = JSON.parse(fs.readFileSync("./conf.json"));
 
 app.use(bodyParser.json());
@@ -22,24 +22,27 @@ io.on('connection', (socket) => {
     console.log("socket connected: " + socket.id);
     io.emit("list", users); //invio la lista di chi é gia in chat quando ci si unisce
     socket.on('name', (name) => {
-        users.push({Id : socket.id, name : name}) //aggiungo il nuovo utente
+        users.push({ socketId : socket.id, name : name}) //aggiungo il nuovo utente
         io.emit("list", users);
     })
     socket.on('message', (message) => {
-        const response = socket.id + ': ' + message;
-        console.log(response);
-        io.emit("chat", response);
+        const user = users.find(user => user.socketId === socket.id);
+        if (user) {
+            const response = `${user.name}: ${message}`;
+            console.log(response);
+            io.emit("chat", response); 
+        }
     });
     socket.on('disconnect', () => { //Se qualcuno si disconnette
         console.log("quit: " + socket.id);
-        for (let i = 0; i < userList.length; i++) {
-            if (userList[i].socketId === socket.id) {
-                userList.splice(i, 1);
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].socketId === socket.id) {
+                users.splice(i, 1);
                 break; 
             }
         }
 
-        io.emit("list", userList);
+        io.emit("list", users);
     });
 });
 server.listen(conf.port, () => {
