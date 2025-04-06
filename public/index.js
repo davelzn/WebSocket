@@ -44,7 +44,7 @@ document.getElementById("closeModalButton").onclick= () => {
 
 
 document.getElementById("submitName").onclick = () => {
-    const nome = nomeUtenteInput.value.trim();
+    const nome = nomeUtenteInput.value
     if (nome) {
         flag = true;
         socket.emit("name", nome)
