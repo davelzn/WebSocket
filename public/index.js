@@ -9,7 +9,7 @@ const socket = io();
 // Trova gli elementi
 const modal = document.getElementById('myModal');
 const openModalButton = document.getElementById('openModalButton');
-const closeModalButtons = document.querySelectorAll('#closeModalButton, #closeModalButtonFooter');
+const closeModalButtons = document.getElementById('closeModalButton');
 const submitNameButton = document.getElementById('submitName');
 const nomeUtenteInput = document.getElementById('nomeUtente');
 let flag = false;
@@ -73,13 +73,13 @@ socket.on("chat", (message) => {
 })
 socket.on("list", (users) => {
     const userListElement = document.getElementById("userList");
-    userListElement.innerHTML = '';
+    let html = "";
     users.forEach(user => {
-        const li = document.createElement("li");
-        li.textContent = user.name;
-        userListElement.appendChild(li);
+        html += `<li>${user.name}</li>`;
     });
+    userListElement.innerHTML = html;
 });
+
 
 const render = () => {
     let html = "";
