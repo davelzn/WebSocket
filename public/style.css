@@ -1,0 +1,118 @@
+/* style.css */
+
+body {
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2rem;
+}
+
+h3 {
+    text-shadow: 0 0 5px #00ffff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    margin-top: 2rem;
+}
+
+/* Chat list */
+#chat {
+    max-height: 300px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+/* Input e bottone invio */
+#input {
+    background-color: #222;
+    color: #0ff;
+    border: 1px solid #0ff;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+#sendButton {
+    margin-top: 0.5rem;
+    width: 100%;
+    background: linear-gradient(45deg, #00f2fe, #4facfe);
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+#sendButton:hover {
+    background: linear-gradient(45deg, #fc466b, #3f5efb);
+    color: white;
+}
+
+/* Tabella utenti */
+table#userList {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+table#userList th,
+table#userList td {
+    color: #fff;
+    border: none;
+}
+
+/* Modale */
+.modal-content {
+    background: rgba(20, 20, 20, 0.85);
+    border: 1px solid #0ff;
+    color: #fff;
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.btn-close {
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+/* Pulsanti */
+.btn-primary {
+    background: linear-gradient(to right, #00c6ff, #0072ff);
+    border: none;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(to right, #fc466b, #3f5efb);
+    color: #fff;
+}
+
+ul#userList {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul#userList li {
+    padding: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.1);
+}
+#mainContent.blurred {
+    filter: blur(8px);
+    transition: filter 0.3s ease-in-out;
+}
